@@ -3,7 +3,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elliot-cv}[2018/09/24 Elliots Custom CV Class]
 
-\LoadClass[8pt]{extarticle}
+\LoadClass[10pt]{extarticle}
 
 \RequirePackage{titlesec}
 \RequirePackage[T1]{fontenc}
@@ -11,7 +11,7 @@
 \RequirePackage{lmodern}
 \RequirePackage{array}
 \RequirePackage{extsizes}
-\RequirePackage[margin=1in]{geometry}
+\RequirePackage[margin=0.5in]{geometry}
 
 \titleformat{\section}
   {\Large\scshape\raggedright}
@@ -75,8 +75,8 @@
 
 \newenvironment{skillset}{
     \renewcommand{\arraystretch}{1.4}
-    \begin{flushleft}\begin{tabular}{c c c}}
-            {\end{tabular}\end{flushleft}}
+    \begin{tabular}{l r l}}
+            {\end{tabular}}
 
 \newcommand{\skillmajor}[2]{
     \multicolumn{2}{l}{\textbf{\textsc{#1}}} &  \multicolumn{1}{l}{#2} \\
