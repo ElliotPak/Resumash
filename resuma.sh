@@ -14,11 +14,12 @@ else
     PARTSDIR="$1"
 fi
 
+# change this variable to change the parts used to build your resume
 PARTS="head intro education skills work projects honours tail"
+# change this variable to specify alternate versions to be built
 TYPES="site"
 
-TEXHEAD="\\documentclass{elliot-cv}\\begin{document}"
-TEXTAIL="\\end{document}"
+# you shouldn't need to change anything past this point
 MAIN=""
 EXTRA=""
 
@@ -37,10 +38,10 @@ for part in $PARTS; do
     fi
 done
 
-echo "$MAIN" > tex-compile/$PARTSDIR/main.tex
-echo "$EXTRA" > tex-compile/$PARTSDIR/extra.tex
-pdflatex tex-compile/$PARTSDIR/main.tex
-pdflatex tex-compile/$PARTSDIR/extra.tex
+echo "$MAIN" > tex-compile/$PARTSDIR/resume.tex
+echo "$EXTRA" > tex-compile/$PARTSDIR/resume-extra.tex
+pdflatex tex-compile/$PARTSDIR/resume.tex
+pdflatex tex-compile/$PARTSDIR/resume-extra.tex
 
 for type in $TYPES; do
     THISTYPE=""
@@ -65,10 +66,10 @@ for type in $TYPES; do
             fi
         fi
     done
-    echo "$THISTYPE" > tex-compile/$PARTSDIR/$type.tex
-    echo "$THISTYPEEXTRA" > tex-compile/$PARTSDIR/${type}extra.tex
-    pdflatex tex-compile/$PARTSDIR/$type.tex
-    pdflatex tex-compile/$PARTSDIR/${type}extra.tex
+    echo "$THISTYPE" > tex-compile/$PARTSDIR/resume-$type.tex
+    echo "$THISTYPEEXTRA" > tex-compile/$PARTSDIR/resume-$type-extra.tex
+    pdflatex tex-compile/$PARTSDIR/resume-$type.tex
+    pdflatex tex-compile/$PARTSDIR/resume-$type-extra.tex
 done
 
 mv *.pdf pdf/$PARTSDIR
