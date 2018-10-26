@@ -58,6 +58,15 @@
   \centerline{\Huge{#1}}
 }
 
+\newcommand{\contactsmall}[4]{
+    \begin{center}
+    {\Large} #1
+    {\large\textperiodcentered} {\Large} #2\\
+    \vspace{0.5em}
+    #3 {\large\textperiodcentered} #4
+    \end{center}
+}
+
 \newcommand{\contact}[8]{
     \begin{center}
     #1, #2 #3
@@ -66,11 +75,6 @@
     \vspace{0.5em}
     #6 {\large\textperiodcentered} #7 {\large\textperiodcentered} #8
     \end{center}
-}
-
-\newcommand{\longcontact}[5]{
-    \center{#1 \hfill {\large\textperiodcentered} \hfill #2 \hfill {\large\textperiodcentered} \hfill #3} \\
-    \center{ {\Large} #4 \hfill {\Large} #5}
 }
 
 \newenvironment{skillset}{
