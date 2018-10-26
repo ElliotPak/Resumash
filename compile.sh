@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-PARTS="intro education skills work projects honours"
+PARTS="head intro education skills work projects honours tail"
 TYPES="site"
 
 TEXHEAD="\\documentclass{elliot-cv}\\begin{document}"
 TEXTAIL="\\end{document}"
-MAIN="$TEXHEAD"
-EXTRA="$TEXHEAD"
+MAIN=""
+EXTRA=""
 
 [ -d "tex" ] || mkdir tex
 [ -d "pdf" ] || mkdir pdf
@@ -23,20 +23,22 @@ for part in $PARTS; do
     fi
 done
 
-echo "$MAIN$TEXTAIL" > tex/main.tex
-echo "$EXTRA$TEXTAIL" > tex/extra.tex
+echo "$MAIN" > tex/main.tex
+echo "$EXTRA" > tex/extra.tex
 pdflatex tex/main.tex
 pdflatex tex/extra.tex
 
 for type in $TYPES; do
-    THISTYPE="$TEXHEAD"
-    THISTYPEEXTRA="$TEXHEAD"
+    THISTYPE=""
+    THISTYPEEXTRA=""
     for part in $PARTS; do
         # adds the type specific text if it exists, and default text otherwise
         if [ -f "parts/$part.$type.tex" ]; then
             THISTYPE="$THISTYPE$(cat parts/$part.$type.tex)"
+            THISTYPEEXTRA="$THISTYPEEXTRA$(cat parts/$part.$type.tex)"
         else
             THISTYPE="$THISTYPE$(cat parts/$part.tex)"
+            THISTYPEEXTRA="$THISTYPEEXTRA$(cat parts/$part.tex)"
         fi
 
         # adds type specific extra text to the extra if it exists, and default
@@ -49,9 +51,8 @@ for type in $TYPES; do
             fi
         fi
     done
-    echo tex/$type.tex
-    echo "$THISTYPE$TEXTAIL" > tex/$type.tex
-    echo "$THISTYPEEXTRA$TEXTAIL" > tex/${type}extra.tex
+    echo "$THISTYPE" > tex/$type.tex
+    echo "$THISTYPEEXTRA" > tex/${type}extra.tex
     pdflatex tex/$type.tex
     pdflatex tex/${type}extra.tex
 done
