@@ -1,5 +1,9 @@
 # Resumash
 
+*Note that Resumash is **NOT BEING ACTIVELY MAINTAINED** from this point
+onward. An more powerful and easier-to-use alternative will be built by me at
+some point, however.*
+
 Resumash builds multiple versions of your LaTeX resume in 77 lines of bash
 script. It can build multiple versions of your resume (an alternate version for
 your site over a version you apply with elsewhere, for example) and it can also
@@ -9,7 +13,7 @@ I've included a sample, along with a LaTeX template, for you to play
 around with. If you don't want to read all of this, just type `./resuma.sh
 parts-example` and get to it!
 
-Resumash requires only `bash` and `pdflatex` to be installed.
+Resumash requires only `bash` and `xelatex` to be installed.
 
 ## How to Use
 

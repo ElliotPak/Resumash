@@ -1,20 +1,26 @@
-%% Taken from https://www.sharelatex.com/blog/2011/03/27/how-to-write-a-latex-class-file-and-design-your-own-cv.html
+%% Taken from https://www.sharelatex.com/blog/2012/03/27/how-to-write-a-latex-class-file-and-design-your-own-cv.html
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elliot-cv}[2018/09/24 Elliots Custom CV Class]
 
-\LoadClass[10pt]{extarticle}
+\LoadClass[9pt]{extarticle}
 
 \RequirePackage{titlesec}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
 \RequirePackage{enumitem}
 \RequirePackage{lmodern}
 \RequirePackage{array}
 \RequirePackage{extsizes}
-\RequirePackage[margin=0.5in]{geometry}
+\RequirePackage{anyfontsize}
+\RequirePackage[margin=0.75in]{geometry}
+
+\renewcommand{\familydefault}{\sfdefault}
+\setsansfont{Overpass}
+\pagenumbering{gobble}
 
 \titleformat{\section}
-  {\Large\scshape\raggedright}
+  {\huge\bfseries\raggedright}
   {}{0em}
   {}
 [\titlerule]
@@ -32,7 +38,7 @@
 }
 
 \newcommand{\entrytitle}[1]{
-    \large \textsc{#1} \normalsize
+    \Large \textbf{#1} \normalsize
 }
 
 \newcommand{\entrylocation}[1]{
@@ -55,7 +61,7 @@
 }
 
 \newcommand{\name}[1]{
-  \centerline{\Huge{#1}}
+    \centerline{\bfseries\fontsize{25}{30}\selectfont #1}
 }
 
 \newcommand{\contactsmall}[4]{
@@ -67,7 +73,16 @@
     \end{center}
 }
 
-\newcommand{\contact}[8]{
+\newcommand{\contact}[5]{
+    \begin{center}
+    {\Large} #1
+    {\large\textperiodcentered} {\Large} #2\\
+    \vspace{0.5em}
+    #3 {\large\textperiodcentered} #4 {\large\textperiodcentered} #5
+    \end{center}
+}
+
+\newcommand{\contactaddress}[8]{
     \begin{center}
     #1, #2 #3
     {\large\textperiodcentered} {\Large} #4
@@ -77,13 +92,13 @@
     \end{center}
 }
 
-\newenvironment{skillset}{
+\newenvironment{skillset3}{
     \renewcommand{\arraystretch}{1.4}
     \begin{tabular}{l r l}}
             {\end{tabular}}
 
 \newcommand{\skillmajor}[2]{
-    \multicolumn{2}{l}{\textbf{\textsc{#1}}} &  \multicolumn{1}{l}{#2} \\
+    \multicolumn{2}{l}{\bfseries{\scshape{#1}}} &  \multicolumn{1}{l}{#2} \\
 }
 
 \newcommand{\skillminor}[2]{
@@ -91,7 +106,7 @@
 }
 
 \newcommand{\skillboth}[3]{
-    \multicolumn{1}{l}{\textbf{\textsc{#1}}} & \multicolumn{1}{l}{\scshape#2} & \multicolumn{1}{l}{#3} \\
+    \multicolumn{1}{l}{\bfseries{\scshape{#1}}} & \multicolumn{1}{l}{\scshape#2} & \multicolumn{1}{l}{#3} \\
 }
 
 \newcommand{\award}[4]{

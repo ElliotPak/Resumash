@@ -40,8 +40,8 @@ done
 
 echo "$MAIN" > tex-compile/$PARTSDIR/resume.tex
 echo "$EXTRA" > tex-compile/$PARTSDIR/resume-extra.tex
-pdflatex tex-compile/$PARTSDIR/resume.tex
-pdflatex tex-compile/$PARTSDIR/resume-extra.tex
+xelatex tex-compile/$PARTSDIR/resume.tex
+xelatex tex-compile/$PARTSDIR/resume-extra.tex
 
 for type in $TYPES; do
     THISTYPE=""
@@ -68,8 +68,8 @@ for type in $TYPES; do
     done
     echo "$THISTYPE" > tex-compile/$PARTSDIR/resume-$type.tex
     echo "$THISTYPEEXTRA" > tex-compile/$PARTSDIR/resume-$type-extra.tex
-    pdflatex tex-compile/$PARTSDIR/resume-$type.tex
-    pdflatex tex-compile/$PARTSDIR/resume-$type-extra.tex
+    xelatex tex-compile/$PARTSDIR/resume-$type.tex
+    xelatex tex-compile/$PARTSDIR/resume-$type-extra.tex
 done
 
 mv *.pdf pdf/$PARTSDIR
